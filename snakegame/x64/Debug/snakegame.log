@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(16,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(32,36): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(36,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(37,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(61,34): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ekala\source\repos\snakegame\snakegame\main.cpp(147,22): warning C4305: 'argument': truncation from 'double' to 'float'
+  snakegame.vcxproj -> C:\Users\ekala\source\repos\snakegame\x64\Debug\snakegame.exe

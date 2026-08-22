@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ekala\\source\\repos\\snakegame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28FD1F5A-EDD0-42A5-ABC4-2D05242E39B8}|snakegame\\snakegame.vcxproj|C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{28FD1F5A-EDD0-42A5-ABC4-2D05242E39B8}|snakegame\\snakegame.vcxproj|solutionrelative:snakegame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28FD1F5A-EDD0-42A5-ABC4-2D05242E39B8}|snakegame\\snakegame.vcxproj|C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{28FD1F5A-EDD0-42A5-ABC4-2D05242E39B8}|snakegame\\snakegame.vcxproj|solutionrelative:snakegame\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".gitattributes",
+              "DocumentMoniker": "C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\.gitattributes",
+              "RelativeDocumentMoniker": "snakegame\\.gitattributes",
+              "ToolTip": "C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\.gitattributes",
+              "RelativeToolTip": "snakegame\\.gitattributes",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-22T01:20:20.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\main.cpp",
+              "RelativeDocumentMoniker": "snakegame\\main.cpp",
+              "ToolTip": "C:\\Users\\ekala\\source\\repos\\snakegame\\snakegame\\main.cpp",
+              "RelativeToolTip": "snakegame\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-17T22:38:54.156Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

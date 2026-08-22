@@ -1,0 +1,3 @@
+C:\Users\ekala\source\repos\snakegame\x64\Release\raylib.dll
+C:\Users\ekala\source\repos\snakegame\x64\Release\glfw3.dll
+C:\Users\ekala\source\repos\snakegame\snakegame\x64\Release\snakegame.vcxproj.Up2Date
