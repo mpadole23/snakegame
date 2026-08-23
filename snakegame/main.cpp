@@ -6,13 +6,15 @@
 int cellSize = 30;
 int cellCount = 25;
 float lastUpdate = 0;
+bool gameOver = false;
+int points = 0;
 
 Color green = { 0,158,47,255 };
 Color blue = { 102, 191, 255, 255 };
 Color red = { 230, 41, 55, 255 };
 
 bool eventTriggered(float interval) {
-
+ 
 	float time = GetTime();
 
 	if (time - lastUpdate >= interval) {
@@ -78,7 +80,7 @@ public:
 
 	}
 
-	void moveWithoutApple() { //move the snake forward and remove the last segment of the tail (snake does not grow)
+	void move() { //move the snake forward and remove the last segment of the tail (snake does not grow)
 		if (direction.x != 0 || direction.y != 0) {
 			body.push_front(Vector2Add(body[0], direction));
 			body.pop_back();
@@ -86,11 +88,12 @@ public:
 			lastDirection = direction;
 		}
 	}
-	void moveWithApple() { //move the snake forward and add a new segment to the tail (snake grows)
+	void moveAndGrow() { //move the snake forward and add a new segment to the tail (snake grows)
 		if (direction.x != 0 || direction.y != 0) {
 			body.push_front(Vector2Add(body[0], direction));
-
 			lastDirection = direction;
+
+			points += 1;
 		}
 	}
 };
@@ -99,29 +102,60 @@ class Game {
 public:
 	Food apple;
 	Snake snake;
+	
+	bool appleEaten = false;
 
 	void draw(){
 		apple.Draw();
 		snake.Draw();
 	}
 
-	bool checkForApple(Vector2& position, std::deque<Vector2>& body) { //check if snake head met apple
+	void checkForApple(Vector2& position, std::deque<Vector2>& body) { //check if snake head met apple
 
-		if (body[0].x == position.x && body[0].y == position.y) {
+		if(body[0].x == position.x && body[0].y == position.y) {
 			position = apple.getRandomPosition();
-			return true;
-		}
-
-		return false;
-	}
-
-	void update() {
-		if (checkForApple(apple.position, snake.body)) {
-			snake.moveWithApple();
+			appleEaten = true;
 		}
 		else {
-			snake.moveWithoutApple();
+			appleEaten = false;
 		}
+	}
+
+	void checkWallCollision(Vector2& position, std::deque<Vector2>& body) { //check if snake went beyond boundaries
+		if ((body[0].x == cellCount) ||
+			(body[0].y == cellCount) ||
+			(body[0].x == -1) ||
+			(body[0].y == -1)) {
+
+			gameOver = true;
+		}
+	}
+
+	void checkSnakeCollision(std::deque<Vector2>& body) { //check if the snake collided with its own body
+		for (unsigned int i = 1; i < body.size(); i++) {
+			if (body[0].x == body[i].x && body[0].y == body[i].y) {
+				gameOver = true;
+			}
+		}
+	}
+
+	void printScore() {
+			DrawText(TextFormat("Score: %i", points), 0, 0, 10, WHITE);
+	}
+
+
+	void update() {
+		checkForApple(apple.position, snake.body);
+		checkSnakeCollision(snake.body);
+		checkWallCollision(apple.position, snake.body);
+
+		if (appleEaten == true) {
+			snake.moveAndGrow();
+		}
+		else {
+			snake.move();
+		}
+
 	}
 
 	void snakeInput() {
@@ -137,24 +171,26 @@ int main() {
 
 	Game game;
 
-
 	while (WindowShouldClose() == false) {
 		BeginDrawing();
 		
-		game.snakeInput(); //get direction of snake
-		
-		if (eventTriggered(0.2)) { //move the snake forward and check if it ate the apple
-			game.update();
+		if (!gameOver) {
+			game.snakeInput(); //get direction of snake
+
+			if (eventTriggered(0.2)) { //move the snake forward and check if it ate the apple
+				game.update();
+			}
+
+			ClearBackground(green); //draw the background, snake, apple
+			game.draw();
+			game.printScore();
+		}
+		else {
+			ClearBackground(green);
+			DrawText("Game Over!", ((cellCount*cellSize) / 2), ((cellCount * cellSize) / 2), 20, red);
 		}
 
-
-		ClearBackground(green); //draw the background, snake, apple
-		game.draw();
-
-		
-
 		EndDrawing();
-
 	}
 
 	CloseWindow();
