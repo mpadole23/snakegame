@@ -14,7 +14,7 @@ Color blue = { 102, 191, 255, 255 };
 Color red = { 230, 41, 55, 255 };
 
 bool eventTriggered(float interval) {
- 
+
 	float time = GetTime();
 
 	if (time - lastUpdate >= interval) {
@@ -36,7 +36,7 @@ public:
 	Vector2 getRandomPosition() {
 		float x = GetRandomValue(0, cellCount - 1);
 		float y = GetRandomValue(0, cellCount - 1);
-		
+
 		return Vector2{ x,y };
 	}
 
@@ -50,14 +50,14 @@ private:
 public:
 
 	std::deque<Vector2> body = { Vector2{6,9}, Vector2{5,9}, Vector2{4,9} };
-	
+
 
 	void Draw() {
 		for (unsigned int i = 0; i < body.size(); i++) {
-			
+
 			float x = body[i].x;
 			float y = body[i].y;
-			
+
 			Rectangle segment = Rectangle{ x * cellSize, y * cellSize, (float)cellSize, (float)cellSize };
 			DrawRectangleRounded(segment, 0.3, 6, blue);
 		}
@@ -71,7 +71,7 @@ public:
 		else if (IsKeyPressed(KEY_A) && lastDirection.x != 1) {
 			direction = { -1,0 };
 		}
-		else if(IsKeyPressed(KEY_S) && lastDirection.y != -1){
+		else if (IsKeyPressed(KEY_S) && lastDirection.y != -1) {
 			direction = { 0,1 };
 		}
 		else if (IsKeyPressed(KEY_D) && lastDirection.x != -1) {
@@ -102,17 +102,17 @@ class Game {
 public:
 	Food apple;
 	Snake snake;
-	
+
 	bool appleEaten = false;
 
-	void draw(){
+	void draw() {
 		apple.Draw();
 		snake.Draw();
 	}
 
 	void checkForApple(Vector2& position, std::deque<Vector2>& body) { //check if snake head met apple
 
-		if(body[0].x == position.x && body[0].y == position.y) {
+		if (body[0].x == position.x && body[0].y == position.y) {
 			position = apple.getRandomPosition();
 			appleEaten = true;
 		}
@@ -139,11 +139,6 @@ public:
 		}
 	}
 
-	void printScore() {
-			DrawText(TextFormat("Score: %i", points), 0, 0, 10, WHITE);
-	}
-
-
 	void update() {
 		checkForApple(apple.position, snake.body);
 		checkSnakeCollision(snake.body);
@@ -155,25 +150,27 @@ public:
 		else {
 			snake.move();
 		}
-
 	}
 
 	void snakeInput() {
 		snake.getInput();
 	}
 
+	void printScore() {
+		DrawText(TextFormat("Score: %i", points), 0, 0, 20, WHITE);
+	}
 };
 
 int main() {
 	std::cout << "Starting game...";
-	InitWindow(cellSize*cellCount, cellSize*cellCount, "Snake Game");
+	InitWindow(cellSize * cellCount, cellSize * cellCount, "Snake Game");
 	SetTargetFPS(60);
 
 	Game game;
 
 	while (WindowShouldClose() == false) {
 		BeginDrawing();
-		
+
 		if (!gameOver) {
 			game.snakeInput(); //get direction of snake
 
@@ -187,12 +184,11 @@ int main() {
 		}
 		else {
 			ClearBackground(green);
-			DrawText("Game Over!", ((cellCount*cellSize) / 2), ((cellCount * cellSize) / 2), 20, red);
+			DrawText("Game Over!", ((cellCount * cellSize) / 2), ((cellCount * cellSize) / 2), 20, red);
 		}
 
 		EndDrawing();
 	}
 
 	CloseWindow();
-
 }
